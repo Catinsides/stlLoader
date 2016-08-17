@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="three.min.js"></script>
+<script type="text/javascript" src="STLLoader.js"></script>
+<script type="text/javascript" src="OrbitControls.js"></script>
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+}
+</style>
+</head>
+<body>
+<div id="output"></div>
+<script type="text/javascript">
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var webGLRenderer = new THREE.WebGLRenderer();
+    webGLRenderer.setClearColor(0xEEEEEE);
+    webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+
+    camera.position.x = 150;
+    camera.position.y = 50;
+    camera.position.z = 150;
+
+    camera.lookAt(scene.position);
+    controls = new THREE.OrbitControls( camera, webGLRenderer.domElement );
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.enableZoom = true;
+
+    document.getElementById("output").appendChild(webGLRenderer.domElement);
+
+    var axes = new THREE.AxisHelper(20);
+    scene.add(axes);
+    var group;
+    var loader = new THREE.STLLoader();
+    var group = new THREE.Object3D();
+    loader.load("sample.stl", function (geometry) {
+    var mat = new THREE.MeshNormalMaterial();
+    group = new THREE.Mesh(geometry, mat);
+    group.scale.set(0.3, 0.3, 0.3);
+    scene.add(group);
+        });
+    render();
+    function render() {
+            requestAnimationFrame(render);
+            controls.update();
+            webGLRenderer.render(scene, camera);
+       }
+</script>
+</body>
+</html>
