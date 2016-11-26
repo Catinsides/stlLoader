@@ -36,7 +36,6 @@ body {
     scene.add(axes);
     
     var loader = new THREE.STLLoader();
-    var group = new THREE.Object3D();
     loader.load("sample.stl", function (geometry) {
     var mat = new THREE.MeshNormalMaterial();
     mesh = new THREE.Mesh(geometry, mat);
