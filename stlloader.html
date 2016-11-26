@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="three.min.js"></script>
-<script type="text/javascript" src="STLLoader.js"></script>
-<script type="text/javascript" src="OrbitControls.js"></script>
+<script type="text/javascript" src="js/three.min.js"></script>
+<script type="text/javascript" src="js/STLLoader.js"></script>
+<script type="text/javascript" src="js/OrbitControls.js"></script>
 <style>
 body {
     margin: 0;
@@ -34,14 +34,14 @@ body {
 
     var axes = new THREE.AxisHelper(20);
     scene.add(axes);
-    var group;
+    
     var loader = new THREE.STLLoader();
     var group = new THREE.Object3D();
     loader.load("sample.stl", function (geometry) {
     var mat = new THREE.MeshNormalMaterial();
-    group = new THREE.Mesh(geometry, mat);
-    group.scale.set(0.3, 0.3, 0.3);
-    scene.add(group);
+    mesh = new THREE.Mesh(geometry, mat);
+    mesh.scale.set(0.3, 0.3, 0.3);
+    scene.add(mesh);
         });
     render();
     function render() {
