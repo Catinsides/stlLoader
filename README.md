@@ -1,6 +1,8 @@
 # stlLoader
-一个使用Three.js读取STL模型的简单示例.
-![image](https://github.com/Catinsides/stlLoader/blob/master/sample.jpg)
+
+###一个使用Three.js读取STL模型的简单示例.
+
+###![image](https://github.com/Catinsides/stlLoader/blob/master/sample.jpg)
 
 推荐使用 Chrome.
 
